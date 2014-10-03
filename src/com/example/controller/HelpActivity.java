@@ -32,8 +32,7 @@ public class HelpActivity extends Activity
 		headerItems.add("How do I resize the controls in the editor?");
 		headerItems.add("How can I customize the directional pads?");
 		
-		
-		subItems.add("Head to www.puturlhere.com on your computer to download the client for Windows");
+		subItems.add("Head to www.bit.ly/1rRnHcX on your computer to download the client for Windows");
 		subItems.add("Unfortunately there is no Mac version of the controller client. Sorry!");
 		subItems.add("First select the control from the list on the PC client. If you're binding a key to a directional pad, then click on the pad image to select the direction you want to bind.\n\nNext simply enter the key or keys you want to bind to the control in the keybind textbox, and press the \"Set keybind\" button.\n\nYou can have up to 10 keys bound to one control.");
 		subItems.add("Bindable keys are A-Z, 1-9, Arrow keys, Space, Escape, Control, Tab, and Enter");
