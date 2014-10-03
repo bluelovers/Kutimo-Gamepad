@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kutimo Gamepad</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="connections_tag">Connections</string>
+    <string name="btntxt_edit_controller">Edit Controller Layout</string>
+    <string name="connect_to_tag">Connect to: </string>
+    <string name="title_activity_help">HelpActivity</string>
+    <string name="refresh_tag">Refresh</string>
+
+</resources>
