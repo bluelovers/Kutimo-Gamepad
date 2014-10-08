@@ -42,7 +42,7 @@ public class HomeActivity extends Activity
 	protected void onResume()
 	{
 		super.onResume();
-		
+		((ListView)findViewById(R.id.list_possible_connections)).setAdapter(new ArrayAdapter<String>(this, R.layout.client_list_item, R.id.list_item_text, new String[] {}));
 		((TextView)findViewById(R.id.txt_clients_tag)).setText("Searching for clients...");
         new Thread(new ClientManagerThread(this)).start();
 	}

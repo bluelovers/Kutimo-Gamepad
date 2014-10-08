@@ -59,18 +59,23 @@ public class ClientManagerThread implements Runnable
 	    	socket.close();
 	    	
 	    	socket = new DatagramSocket(PORT);
-	    	packet = new DatagramPacket(new byte[15], 15);
 	    	socket.setSoTimeout(1000);
-	    	socket.receive(packet);
-	    	String clientIp = "";
 	    	
-	    	for (int i = 0; i < packet.getData().length; i++)
+	    	for (int n = 0; n < 10; n++)
 	    	{
-	    		if (packet.getData()[i] != 0)
-	    			clientIp += (char)packet.getData()[i];
+	    		packet = new DatagramPacket(new byte[15], 15);
+		    	socket.receive(packet);
+		    	String clientIp = "";
+		    	
+		    	for (int i = 0; i < packet.getData().length; i++)
+		    	{
+		    		if (packet.getData()[i] != 0)
+		    			clientIp += (char)packet.getData()[i];
+		    	}
+		    	
+		    	clients.add(clientIp);
 	    	}
 	    	
-	    	clients.add(clientIp);
 	    	socket.close();
 		} 
 		catch (InterruptedIOException e) 
