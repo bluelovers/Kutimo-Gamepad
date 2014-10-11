@@ -44,8 +44,7 @@ public class ControllerActivity extends Activity
 	    clientThread.sendControlListFlag = true;
 	    
 	    controllerSurface = new ControllerSurface(getBaseContext());
-	    controllerSurface.parent = this;
-	    controllerSurface.setControls(controls);
+	    controllerSurface.init(controls, this, false);
 	    controllerSurface.setBackgroundColor(0xFF152326);
 	    controllerSurface.setOnTouchListener(new controlListener());
 	 

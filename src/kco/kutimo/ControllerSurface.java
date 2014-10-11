@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.RectF;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 public class ControllerSurface extends View
@@ -17,19 +18,27 @@ public class ControllerSurface extends View
 	ArrayList<RectF> padArcs;
 	ArrayList<Control> controls;
 	boolean inEditor = false;
+	int screenWidth, screenHeight;
 	
 	int controlBorderColor = 0xFF152326, controlInnerColor = 0xFF22778B, controlPressedColor = 0xFF214047, controlIdColor = 0xFF268399;
 	
 	public ControllerSurface(Context context)
 	{
 		super(context);
-		paint.setFlags(Paint.ANTI_ALIAS_FLAG);
 	}
 	
-	public void setControls(ArrayList<Control> _controls)
+	public void init(ArrayList<Control> _controls, Activity _parent, boolean _inEditor)
 	{
 		controls = _controls;
+		parent = _parent;
+		inEditor = _inEditor;
 		
+		DisplayMetrics metrics = new DisplayMetrics();
+        parent.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        screenWidth = metrics.widthPixels;
+        screenHeight = metrics.heightPixels;
+        
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
 		getPadArcs();
 	}
 	
@@ -41,8 +50,14 @@ public class ControllerSurface extends View
 			paint.setColor(0xFFFFFFFF);
 			paint.setTextSize(40);
 			paint.setTextAlign(Align.CENTER);
-		    canvas.drawText("Touch and hold anywhere on the screen", ((ControllerEditActivity)parent).screenWidth / 2, ((ControllerEditActivity)parent).screenWidth / 4, paint);
-		    canvas.drawText("to bring up the editor menu", ((ControllerEditActivity)parent).screenWidth / 2, ((ControllerEditActivity)parent).screenWidth / 4 + 40, paint);
+			
+			if (inEditor)
+			{
+				canvas.drawText("Touch and hold anywhere on the screen", (screenWidth / 2), screenWidth / 4, paint);
+		    	canvas.drawText("to bring up the editor menu", (screenWidth / 2), (screenWidth / 4) + 40, paint);
+			}
+			else
+				canvas.drawText("No controller layout found!", (screenWidth / 2), screenWidth / 4, paint);
 		}
 		
 		for (int i = 0; i < controls.size(); i++)

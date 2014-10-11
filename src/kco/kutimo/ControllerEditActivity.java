@@ -53,9 +53,7 @@ public class ControllerEditActivity extends Activity
 		retrieveControlsFromFile();
 		
 		controllerSurface = new ControllerSurface(getBaseContext());
-		controllerSurface.parent = this;
-		controllerSurface.inEditor = true;
-		controllerSurface.setControls(controls);
+		controllerSurface.init(controls, this, true);
 		controllerSurface.setBackgroundColor(0xFF152326);
 		controllerSurface.setOnTouchListener(new controlListener());
 		setContentView(controllerSurface);
